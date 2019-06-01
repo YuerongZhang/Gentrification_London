@@ -1,0 +1,93 @@
+---
+title: " London gentrification"
+
+output: rmarkdown::github_document
+---
+
+# London gentrification
+##==========================1. data preparing============================
+
+```{r}
+#join data
+a<- read.csv ("https://www.dropbox.com/s/tef137xkcbcap0h/atlas.csv?raw=1")
+b<- read.csv ("https://www.dropbox.com/s/766yez9h07ljner/2011price.csv?raw=1")
+d<- read.csv ("https://www.dropbox.com/s/b7r399catw38c73/income.csv?raw=1")
+```
+
+```{r}
+library(plyr)
+colnames(b)[1]<-"Codes"
+colnames(d)[1]<-"Codes"
+a<- join(a, b, by="Codes")
+a<- join(a,d, by="Codes")
+lsoa_attr <- a[,-c(11,13)]
+```
+
+```{r}
+head(lsoa_attr)
+```
+
+```{r}
+#define hot market
+lsoa_attr$pr_m_2011 <- as.numeric(as.character(lsoa_attr$price_m_2011))
+lsoa_attr$ch_price <-lsoa_attr$pr_m_2011-lsoa_attr$price_m_2001
+lsoa_attr$hot_market <-ifelse(lsoa_attr$ch_price>111500, 1, 0)
+```
+
+```{r}
+#define lowincome group: 1 indicate low income group
+lsoa_attr$low_income <-ifelse(lsoa_attr$Median_2011<=0.8*median(lsoa_attr$Median_2011), 1,0)
+length(which(lsoa_attr$low_income==1)) #353 lsoa are recognised as low income group. 
+#define affordability: affordability = income/housingprice; 1 indicate could afford
+lsoa_attr$affor <- lsoa_attr$Median_2011/lsoa_attr$pr_m_2011
+#1 indicates the housing price increasing rate is below median speed
+lsoa_attr$if_affor <-ifelse(lsoa_attr$pr_m_2011<=0.8*median(sort (lsoa_attr$pr_m_2011, decreasing=FALSE)), 1,0)
+```
+
+```{r}
+#define education(1 is low educated), renter (1 meanes lots of renters) and nonwhite (1 means lots of non-white)
+lsoa_attr$if_edu <-ifelse(lsoa_attr$qua4_2011<= median(lsoa_attr$qua4_2011), 1,0)
+lsoa_attr$if_rent <-ifelse(lsoa_attr$sp_rented2011 > median (lsoa_attr$sp_rented2011), 1,0)
+lsoa_attr$if_nonwhite <-ifelse(lsoa_attr$non_white > median (lsoa_attr$non_white), 1,0)
+```
+
+```{r}
+#define vulnerable group, vul=1 means vulnerable
+
+lsoa_attr$vul1 <- ifelse(lsoa_attr$if_affor==1 & lsoa_attr$if_edu==1& lsoa_attr$if_rent==1,1,0)
+lsoa_attr$vul2 <- ifelse(lsoa_attr$if_affor==1 & lsoa_attr$if_edu==1& lsoa_attr$if_nonwhite==1,1,0)
+
+lsoa_attr$vul <- ifelse((lsoa_attr$vul1 + lsoa_attr$vul2) >0, 1,0)
+length(which(lsoa_attr$vul==1)) #777 lsoa are recognised as vulnerable groups
+#write.csv (lsoa_attr,"//ad.ucl.ac.uk/home2/ucqbyz2/DesktopSettings/Desktop/EPA/30052019/attr.csv")
+
+```
+
+##=====plot map=======
+```{r}
+library (rgdal)
+library(tmap)
+library(tmaptools)
+library(shinyjs)
+library(sf)
+```
+
+```{r}
+#import the shp of london lsoa
+london <- readOGR(dsn="//ad.ucl.ac.uk/home2/ucqbyz2/DesktopSettings/Desktop/EPA/30052019/rawdata",layer="gl_lsoa")
+#join the attribute data to shp
+london <- append_data(london, lsoa_attr, key.shp="code", key.data="Codes")
+```
+
+```{r}
+tm_shape(london) +
+  tm_fill(c( "Median_2011","pr_m_2011", "sp_rented2011", "non_white","qua4_2011", "affor"),
+           style="jenks",
+           palette=list("Reds", "YlOrRd","PuRd" , "YlGn","GnBu","BuPu"),n=7,
+           auto.palette.mapping=FALSE,
+           title="Legend", alpha=0.9)+
+  tm_facets(sync = TRUE, ncol = 2)+
+  tm_layout(frame=NA,
+           title = c("Household_Income", "Housing_price","%Renters", "%Non_white","%High_Education", "Affordability"), title.size = 2, main.title.position =c("left","top"),
+            legend.position = c("right","bottom"),legend.title.size = 1.8)
+```
