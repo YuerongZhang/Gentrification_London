@@ -97,3 +97,5 @@ tm_shape(lon_carto) +
             title = c("Household_Income", "Housing_price","%Renters", "%Non_white","%High_Education", "Affordability"), title.size = 2, main.title.position =c("left","top"),
             legend.position = c("right","bottom"),legend.title.size = 1.8)
 
+
+##==========================4.catogrise the gentrification groups and plot  ============================
