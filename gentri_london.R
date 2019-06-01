@@ -65,14 +65,35 @@ tm_shape(london) +
   tm_layout(frame=NA,
             title = c("Household_Income", "Housing_price","%Renters", "%Non_white","%High_Education", "Affordability"), title.size = 2, main.title.position =c("left","top"),
             legend.position = c("right","bottom"),legend.title.size = 1.8)
-# Create cartogram based on population
 
+##==========================3. plot cartogram map ============================
 library(cartogram)
+# Create cartogram based on population
 # calculate a poverty rate
-us$poverty_rate = us$poverty_level_15 / us$total_pop_15
-# create a regular map
-ecm1 = tm_shape(london) + tm_polygons("poverty_rate", title = "Poverty rate")
-# create a cartogram
+#construct a cartogram using pop2011
+lon_carto <- cartogram_cont (london,"pop_2011" , itermax=5)
+tm_shape(lon_carto) + tm_fill("affor", title = "affordability")
 
-#london_carto = cartogram(london, "pop_2011")
-#tm_shape(london_carto) + tm_polygons("Affordability", title = "Poverty rate")
+
+tm_shape(lon_carto) +
+  tm_fill(c( "Median_2011","pr_m_2011", "sp_rented2011", "non_white","qua4_2011", "affor"),
+          style="jenks",
+          palette=list("Reds", "YlOrRd","PuRd" , "YlGn","GnBu","BuPu"),n=7,
+          auto.palette.mapping=FALSE,
+          title="Legend", alpha=0.9)+
+  tm_facets(sync = TRUE, ncol = 2)+
+  tm_layout(frame=NA,
+            title = c("Household_Income", "Housing_price","%Renters", "%Non_white","%High_Education", "Affordability"), title.size = 2, main.title.position =c("left","top"),
+            legend.position = c("right","bottom"),legend.title.size = 1.8)
+#cartograms with the boundaries
+tm_shape(lon_carto) +
+  tm_polygons(c( "Median_2011","pr_m_2011", "sp_rented2011", "non_white","qua4_2011", "affor"),
+          style="jenks",
+          palette=list("Reds", "YlOrRd","PuRd" , "YlGn","GnBu","BuPu"),n=7,
+          auto.palette.mapping=FALSE,
+          title="Legend", alpha=0.9)+
+  tm_facets(sync = TRUE, ncol = 2)+
+  tm_layout(frame=NA,
+            title = c("Household_Income", "Housing_price","%Renters", "%Non_white","%High_Education", "Affordability"), title.size = 2, main.title.position =c("left","top"),
+            legend.position = c("right","bottom"),legend.title.size = 1.8)
+
