@@ -21,9 +21,9 @@ Hot market	Change in median property price > change of regional median	1 indicat
 | -------------   |:-------------------------:| 
 | population    | Household income estimates for small areas (GLA) from:  https://data.london.gov.uk/dataset/household-income-estimates-small-areas| $1600 |
 | Low-income       |Household income estimates for small areas (GLA) from:  https://data.london.gov.uk/dataset/household-income-estimates-small-areas      |   
-| Property sales price |Average house prices by LSOA (Land Registry) from https://data.london.gov.uk/dataset/average-house-prices     |    
+| Property sales price | Average house prices by LSOA (Land Registry) from https://data.london.gov.uk/dataset/average-house-prices   |    
 
-| % high education      |Qualification and students census (ONS) from https://www.nomisweb.co.uk/census/2011/ks501ew | 
-| % non-white    |Ethnic group census (ONS) https://www.nomisweb.co.uk/census/2011/ks201ew | 
-| % renters  |Tenure census (ONS) from https://www.nomisweb.co.uk/census/2011/ks402ew | 
-| Hot market |Change in median property price > change of regional median |
+| % high education  |Qualification and students census (ONS) from https://www.nomisweb.co.uk/census/2011/ks501ew | 
+| % non-white        |Ethnic group census (ONS) https://www.nomisweb.co.uk/census/2011/ks201ew | 
+| % renters          |Tenure census (ONS) from https://www.nomisweb.co.uk/census/2011/ks402ew | 
+| Hot market         |Change in median property price > change of regional median |
