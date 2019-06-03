@@ -1,9 +1,8 @@
 ##==========================1. data preparing============================
 #join data
-a<- read.csv ("https://raw.githubusercontent.com/JessicavanJohn/Gentrification_London/master/data/atlas.csv?token=AMGYEP7P7LS4THNB6X5ECUK46B7DC")
-b<- read.csv ("https://raw.githubusercontent.com/YuerongZhang/Gentrification_London/master/data/2011price.csv?token=AMGYEP3V5Z56YBLMP5MATUK46T4NM")
-d<- read.csv ("https://raw.githubusercontent.com/JessicavanJohn/Gentrification_London/master/data/income.csv?token=AMGYEP4AIJ3YPPMCB2GQBQS46B7FM")
-
+a<- read.csv ("https://raw.githubusercontent.com/YuerongZhang/Gentrification_London/master/data/atlas.csv?token=AMGYEPY37DHU6V3FE42FLWS46VC4C")
+b<- read.csv ("https://raw.githubusercontent.com/YuerongZhang/Gentrification_London/master/data/2011price.csv?token=AMGYEP4FPBSSGNL2SI657IS46VC6M")
+d<- read.csv ("https://raw.githubusercontent.com/YuerongZhang/Gentrification_London/master/data/income.csv?token=AMGYEP33NGGLC5L4LR5MBOC46VDCC")
 library(plyr)
 colnames(b)[1]<-"Codes"
 colnames(d)[1]<-"Codes"
