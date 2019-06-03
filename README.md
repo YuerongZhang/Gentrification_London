@@ -17,3 +17,8 @@ The percentage of residents achieving NVQ level 4 or above.
 The % renters are the sum of % social housing renters and % private housing renters.
 Hot market	Change in median property price > change of regional median	1 indicate it is hot market, i.e. has a higher increase rate.
 
+| Indicators      | Sources with links        | 
+| ------------- |:-------------:| 
+| population    | Household income estimates for small areas (GLA) from:  https://data.london.gov.uk/dataset/household-income-estimates-small-areas| $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
