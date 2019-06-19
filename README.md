@@ -12,10 +12,11 @@ Table 1. Data collection with sources
 | % renters          |Tenure census (ONS) from https://www.nomisweb.co.uk/census/2011/ks402ew | The % renters are the sum of % social housing renters and % private housing renters.|
 
 
-# Gentrification_London
+
 Table 2. Gentrification and displacement Census Typologies
+
 | Typology      | Typology criteria       |
-| ----------------    |:-------------------------:|
+| --------------|:-----------------------:|
 | Not losing low-income households   | Low income group in 2011 (see definition in footnote 1)
 Not classified as the At risk of gentrification or Ongoing gentrification or Displacement. |
 | At risk of gentrification   | Low income group in 2011
