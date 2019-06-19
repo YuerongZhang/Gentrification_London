@@ -51,3 +51,7 @@ lsoa_attr$hot_market <-ifelse(lsoa_attr$ch_price>111500, 1, 0)
 Vulnerable in 2001
 ‘Hot market’ from 2001 to 2011
 Demographic change from 2001 to 2011: a) household income increase from 2001 to 2011; and b) difference in % education  > London region
+```diff
++ this will be highlighted in green
+- this will be highlighted in red
+```
