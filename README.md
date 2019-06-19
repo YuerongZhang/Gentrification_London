@@ -3,7 +3,7 @@ Table 1. Data collection with sources
 
 | Indicators      | Sources with links        | Note             |
 | ----------------    |:-------------------------:| ----------------:| 
-| population    | Household income estimates for small areas (GLA) from:  https://data.london.gov.uk/dataset/household-income-estimates-small-areas| 2001 and 2011 LOSA usual resident population data is used.|
+| population    | LSOA usual resident population (ONS) from https://www.nomisweb.co.uk/census/2011/ks101ew| 2001 and 2011 LOSA usual resident population data is used.|
 | Low-income       |Household income estimates for small areas (GLA) from:  https://data.london.gov.uk/dataset/household-income-estimates-small-areas      |  The low-income group is defined as the household income less than 80% of the median of household income. | 
 | Property sales price | Average house prices by LSOA (Land Registry) from:  https://data.london.gov.uk/dataset/average-house-prices  | Using the median value   |
 | Hot market         |Change in median property price > change of regional median |1 indicate it is hot market, i.e. has a higher increase rate.|
