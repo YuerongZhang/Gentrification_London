@@ -20,7 +20,6 @@ Table 2. Gentrification and displacement Census Typologies
 | Not losing low-income households | *Low income group in 2011 (see definition in footnote 1); *Not classified as the At risk of gentrification or Ongoing gentrification or Displacement. |
 | At risk of gentrification   |*Low income group in 2011 Vulnerable in 2011 (see in footnote 2);*‘Hot market’ from 2001 to 2011 (see in footnote 3);*Not currently undergoing displacement or ongoing gentrification|
 | Ongoing displacement   |*Low income group in 2011 Vulnerable in 2011 (see in footnote 2);*Median income decreased from 2001 to 2011;*Few signs of gentrification|
-
 | Ongoing gentrification   |*Low income group in 2011 Vulnerable in 2011 (see in footnote 2);*Gentrified in 2001-2011 (defined in footnote 4)|
 | Moderate- to high-income households   |*Groups which are not recognised as low-income group.|
 
