@@ -18,8 +18,9 @@ lsoa_attr$ch_price <-lsoa_attr$pr_m_2011-lsoa_attr$price_m_2001
 lsoa_attr$hot_market <-ifelse(lsoa_attr$ch_price>111500, 1, 0)
   
 #define lowincome group: 1 indicate low income group
-lsoa_attr$low_income <-ifelse(lsoa_attr$Median_2011<=0.9*median(lsoa_attr$Median_2011), 1,0)
-length(which(lsoa_attr$low_income==1)) #353 lsoa are recognised as low income group. 
+lsoa_attr$low_income <-ifelse(lsoa_attr$Median_2011<=0.95*median(lsoa_attr$Median_2011), 1,0)
+sum (lsoa_attr$pop_2011*lsoa_attr$low_income)/sum(lsoa_attr$pop_2011)
+length(which(lsoa_attr$low_income==1)) 
 #define affordability: affordability = income/housingprice; 1 indicate could afford
 lsoa_attr$affor <- lsoa_attr$Median_2011/lsoa_attr$pr_m_2011
 #1 indicates the housing price increasing rate is below median speed
