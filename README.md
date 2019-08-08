@@ -17,11 +17,11 @@ Table 2. Gentrification and displacement Census Typologies
 
 | Typology      | Typology criteria       |
 | :--------------|:-------------------|
-| Not losing low-income households | *Low income group in 2011 (see definition in note1); *Not classified as at risk of gentrification or ongoing gentrification or displacement. |
-| At risk of gentrification   |*Low income group in 2011* Vulnerable in 2011 (see in note 2) ;*‘Hot market’ from 2001 to 2011 (see note 3);*Not currently undergoing displacement or ongoing gentrification|
-| Ongoing displacement   |*Low income group in 2011 Vulnerable in 2011 (see in footnote 2);*Median income decreased from 2001 to 2011;*Few signs of gentrification|
-| Ongoing gentrification   |*Low income group in 2011 Vulnerable in 2011 (see in note 2);*Gentrified between 2001-2011 (defined in note 4)|
-| Moderate- to high-income households   |*Groups which are not recognised as low-income groups.|
+| Not losing low-income households | -Low income group in 2011 (see definition in note 1); <br /> -Not classified as at risk of gentrification or ongoing gentrification or displacement. |
+| At risk of gentrification   |-Low income group in 2011; <br /> -Vulnerable in 2011 (see note 2); <br />-‘Hot market’ from 2001 to 2011 (see note 3);<br />-Not currently undergoing displacement or ongoing gentrification|
+| Ongoing displacement   |-Low income group in 2011 Vulnerable in 2011 (see  note 2);<br />-Median income decreased from 2001 to 2011;<br />-Few signs of gentrification|
+| Ongoing gentrification   |-Low income group in 2011 Vulnerable in 2011 (see  note 2);<br />-Gentrified between 2001-2011 (defined in note 4)|
+| Moderate- to high-income households   |-Groups which are not recognised as low-income groups.|
 
 1.Low income group in 2011
 
@@ -43,9 +43,9 @@ Housing affordability indicates if housing prices are increasing at a lower rate
 -lsoa_attr$if_affor <-ifelse(lsoa_attr$pr_m_2011<=median(sort (lsoa_attr$pr_m_2011, decreasing=FALSE)), 1,0)
 ```
 and (any 2 of the following 3:) 
-% higher education < London median 
-% renters > London median
-% non-white > London median
+<br />-% higher education < London median
+<br />-% renters > London median
+<br />-% non-white > London median
 ```diff
 -lsoa_attr$if_edu <-ifelse(lsoa_attr$qua4_2011<= median(lsoa_attr$qua4_2011), 1,0)
 -lsoa_attr$if_rent <-ifelse(lsoa_attr$sp_rented2011 > median (lsoa_attr$sp_rented2011), 1,0)
@@ -57,7 +57,7 @@ Change in median real rent (social and private) > London median
 - lsoa_attr$hot_market <-ifelse(lsoa_attr$ch_price>111500, 1, 0)
 ```
 4. Gentrification from 2001 to 2011
-Vulnerable in 2001
-‘Hot market’ from 2001 to 2011
-Demographic change from 2001 to 2011: a) household income increase from 2001 to 2011; and b) difference in % education  > London region
+<br />-Vulnerable in 2001
+<br />-‘Hot market’ from 2001 to 2011
+<br />-Demographic change from 2001 to 2011: <br />-a) household income increase from 2001 to 2011; <br />-b) difference in % education  > London region
 
