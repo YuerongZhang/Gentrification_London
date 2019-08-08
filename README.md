@@ -59,5 +59,5 @@ Change in median real rent (social and private) > London median
 4. Gentrification from 2001 to 2011
 <br />-Vulnerable in 2001
 <br />-‘Hot market’ from 2001 to 2011
-<br />-Demographic change from 2001 to 2011: <br /> -a)household income increase from 2001 to 2011; <br /> difference in % education  > London region
+<br />-Demographic change from 2001 to 2011: <br /> *-a)household income increase from 2001 to 2011; <br /> *difference in % education  > London region
 
