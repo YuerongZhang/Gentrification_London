@@ -17,16 +17,18 @@ Table 2. Gentrification and displacement Census Typologies
 
 | Typology      | Typology criteria       |
 | :--------------|:-------------------|
-| Not losing low-income households | *Low income group in 2011 (see definition in footnote 1); *Not classified as the At risk of gentrification or Ongoing gentrification or Displacement. |
-| At risk of gentrification   |*Low income group in 2011 Vulnerable in 2011 (see in footnote 2);*‘Hot market’ from 2001 to 2011 (see in footnote 3);*Not currently undergoing displacement or ongoing gentrification|
+| Not losing low-income households | *Low income group in 2011 (see definition in note1); *Not classified as at risk of gentrification or ongoing gentrification or displacement. |
+| At risk of gentrification   |*Low income group in 2011* Vulnerable in 2011 (see in note 2) ;*‘Hot market’ from 2001 to 2011 (see note 3);*Not currently undergoing displacement or ongoing gentrification|
 | Ongoing displacement   |*Low income group in 2011 Vulnerable in 2011 (see in footnote 2);*Median income decreased from 2001 to 2011;*Few signs of gentrification|
-| Ongoing gentrification   |*Low income group in 2011 Vulnerable in 2011 (see in footnote 2);*Gentrified in 2001-2011 (defined in footnote 4)|
-| Moderate- to high-income households   |*Groups which are not recognised as low-income group.|
+| Ongoing gentrification   |*Low income group in 2011 Vulnerable in 2011 (see in note 2);*Gentrified between 2001-2011 (defined in note 4)|
+| Moderate- to high-income households   |*Groups which are not recognised as low-income groups.|
 
 1.Low income group in 2011
 
-If the median household income is lower or equal to 0.95*median_2011, then it will be identified as moderate-to high-income group. Conversely, if the median household income is higher than 0.95*median_2011, then it will be identified as moderate-to high-income group. 
-There are two official ways in defining the low-income group in UK: 1) Households are classed as being in low income if they live on less than 60% of the UK's median income (https://www.ethnicity-facts-figures.service.gov.uk/work-pay-and-benefits/pay-and-income/low-income/latest). As the data is at aggregated level, if we apply london[which(london$Median_2011<=0.6*median (london$Median_2011)),], there is no LSOA identified as low-income. The other definition is from Greater London Authority (http://content.tfl.gov.uk/people-on-low-incomes-summary.pdf). It reports 41% of Londoners can be classed as having a low annual household income.  We have tried different ratio and found 0.95*median is the benchmark for differentiating the low-income group and moderate- to high-income groups. 
+If the median household income is lower or equal to 95% of the median household income in 2011, then it will be identified as a low-income group. Conversely, if the median household income is higher than 95% of the median household income, then it will be identified as a moderate-to high-income group. In the case of London, 3025 LSOAs are identified as containing mostlythe moderate- to high-income households, and 1810 LSOAs are identified as thecontaining predominantly low-income households.
+
+There are two official ways of in defining the low-income groups in the UK: 1) Households are classed as being in low income if they live on less than 60% of the UK's median income (https://www.ethnicity-facts-figures.service.gov.uk/work-pay-and-benefits/pay-and-income/low-income/latest). As the data is at aggregated level, if we apply this criteriathis criterion to select the low-income neighbourhoods, there is nonone of the LSOAs are identified as low-income. The other definition is from the Greater London Authority (http://content.tfl.gov.uk/people-on-low-incomes-summary.pdf). It states thatreports 41% of Londoners can be classed as having a low annual household income.  We have tried a different ratio and found 95% of the median household income is theto be a suitable benchmark for differentiating the low-income groups and moderate- to high-income groups.   
+
 ```diff
 -lsoa_attr$low_income <-ifelse(lsoa_attr$Median_2011<=0.95*median(lsoa_attr$Median_2011), 1,0)
 -sum(lsoa_attr$pop_2011*lsoa_attr$low_income)/sum(lsoa_attr$pop_2011)
@@ -34,11 +36,13 @@ There are two official ways in defining the low-income group in UK: 1) Household
 In the case of London, 3025 LSOAs are identified as the moderate- to high-income households, and 1810 LSOAs are identified as the low-income households.
 
 2. Vulnerable in 2011
-Housing affordability indicates if housing price increasing rate is below median speed
+Housing affordability indicates if housing prices are increasing at a lower rate is belowthan the median speed 
+
+
 ```diff
 -lsoa_attr$if_affor <-ifelse(lsoa_attr$pr_m_2011<=median(sort (lsoa_attr$pr_m_2011, decreasing=FALSE)), 1,0)
 ```
-and (any 2 of 3) 
+and (any 2 of the following 3:) 
 % higher education < London median 
 % renters > London median
 % non-white > London median
